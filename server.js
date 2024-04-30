@@ -17,7 +17,9 @@ app.get("/", async (req, res) => {
   res.render("home.ejs", {});
 });
 
-
+app.get("/jokes/new", (req, res) => {
+  res.render("jokes/new.ejs");
+})
 
 
 
