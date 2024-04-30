@@ -10,6 +10,13 @@
     <p><%= joke.date %></p>
     <p><%= joke.genre %></p>
     <p><%= joke.joke %></p>
+
+    <button><a href="/joke/<%= joke._id %>/edit">Make em' Funnier</a></button><br></br>
+
+    <form action="/jokes/<%= joke._id %>/delete" method="POST">
+        <button type="submit">Delete this Joke</button><br></br>
+    </form>
+    
+    <button><a href="/">Back to Home</a></button>
 </body>
-<button><a href="/">Back to Home</a></button>
 </html>

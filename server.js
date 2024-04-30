@@ -30,8 +30,22 @@ app.get("/jokes/:jokeId", async (req, res) => {
     const foundJoke = await JokeBook.findById(req.params.jokeId);
     res.render("jokes/show.ejs", { joke: foundJoke });
   } catch (error) {
-    // console.error("Error fetching joke:", error);
+    console.error("Error fetching joke:", error);
     res.status(500).send("Error fetching joke");
+  }
+});
+
+app.get("/joke/:jokeId/edit", async (req, res) => {
+  try {
+    const foundJoke = await JokeBook.findById(req.params.jokeId);
+    if (!foundJoke) {
+      console.log("Joke's not here dummy");
+      return res.status(404).send("Joke's not here dummy.");
+    }
+    res.render("jokes/edit.ejs", { joke: foundJoke });
+  } catch (error) {
+    console.error("Error fetching joke for edits", error);
+    res.status("Error fetching joke for edits");
   }
 });
 
@@ -42,10 +56,26 @@ app.post("/jokes", async (req, res) => {
   res.redirect("/jokes");
 });
 
+app.post("/jokes/:jokeId/delete", async (req, res) => {
+  try {
+    await JokeBook.findByIdAndDelete(req.params.jokeId);
+    res.redirect("/jokes");
+  } catch (error) {
+    console.error("Error deleting joke:", error);
+    res.status(500).send("Error deleting joke");
+  }
+});
 
-
-
-
+app.post("/jokes/:jokeId/edit", async (req, res) => {
+  try {
+    const { title, date, genre, joke } = req.body;
+    await JokeBook.findByIdAndUpdate(req.params.jokeId, { title, date, genre, joke });
+    res.redirect("/jokes");
+  } catch (error) {
+    console.error("Error updating joke:", error);
+    res.status(500).send("Error updating joke");
+  }
+});
 
 app.listen(3011, () => {
   console.log("Server running on port 3011");
