@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title>Jokes List</title>
 </head>
 <body>
@@ -10,11 +11,13 @@
     <ul>
         <% joke.forEach((joke) => { %>
             <li>
-                <a href="/jokes/<%= joke._id %>"><%= joke.title %></a>
+                <a class="showLST" href="/jokes/<%= joke._id %>"><%= joke.title %></a>
             </li>
         <% }) %>
     </ul>
+    <div class="button-container">
+    <button class="indexBTN"><a href="/jokes/new">Make a Funny</a></button>
+    <button class="indexBTN"><a href="/">Back to Home</a></button>
+    </div>
 </body>
-<button><a href="/jokes/new">Make a Funny</a></button>
-<button><a href="/">Back to Home</a></button>
 </html>

@@ -1,28 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <title>Edit <%= joke.title %></title>
-</head>
-<body>
-    <h1>Edit <%= joke.title %>></h1>
-    <form action="/jokes/<%= joke._id %>/edit" method="POST">
-        <label for="title">Joke Title:</label>
-        <input type="text" id="title" name="title" value="<%= joke.title %>" required><br><br>
+  </head>
+  <body>
+    <div class="title">
+      <h1>Edit <%= joke.title %></h1>
+    </div>
+    <form
+      action="/jokes/<%= joke._id %>/edit"
+      method="POST"
+      class="form-container"
+    >
+      <div class="form-group">
+        <label for="title" class="label">Joke Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value="<%= joke.title %>"
+          class="input"
+          required
+        />
+      </div>
 
-        <label for="date">When did you think of this?:</label>
-        <input type="date" id="date" name="date" value="<%= joke.date %>" required><br><br>
+      <div class="form-group">
+        <label for="date" class="label">When did you think of this?:</label>
+        <input
+          type="date"
+          id="date"
+          name="date"
+          value="<%= joke.date %>"
+          class="input"
+          required
+        />
+      </div>
 
-        <label for="genre">Genre:</label>
-        <input type="text" id="genre" name="genre" value="<%= joke.genre %>" required><br><br>
+      <div class="form-group">
+        <label for="genre" class="label">Genre:</label>
+        <input
+          type="text"
+          id="genre"
+          name="genre"
+          value="<%= joke.genre %>"
+          class="input"
+          required
+        />
+      </div>
 
-        <label for="joke">The New Zinger:</label>
-        <input type="text" id="joke" name="joke" value="<%= joke.joke %>" required><br><br>
-
-        <button type="submit">Make it Happen</button><br><br>
+      <div class="form-group">
+        <label for="joke" class="label">The New Zinger:</label>
+        <textarea
+          id="joke"
+          name="joke"
+          rows="4"
+          cols="50"
+          class="textarea"
+          required
+        >
+<%= joke.joke %></textarea
+        >
+      </div>
+      <div class="button-container">
+        <button class="BTN"><a href="/">Back to Home</a></button>
+        <button class="BTN" type="submit">Make it Happen</button>
+      </div>
     </form>
-
-    <button><a href="/">Back to Home</a></button>
-</body>
+  </body>
 </html>

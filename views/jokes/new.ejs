@@ -1,27 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Let's Hear What Ya Got!</h1>
-<form action="/jokes" method="POST">
-    <label for="title">Joke Title:</label>
-    <input type="text" id="title" name="title" required><br></br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Make a Joke</title>
+  </head>
+  <body>
+    <div class="title">
+      <h1>Let's Hear What Ya Got!</h1>
+    </div>
+    <form action="/jokes" method="POST" class="form-container">
+      <div class="form-group">
+        <label for="title" class="label">Joke Title:</label>
+        <input type="text" id="title" name="title" required class="input" />
+      </div>
 
-    <label for="date">When did you think of this?:</label>
-    <input type="date" id="date" name="date" required><br></br>
+      <div class="form-group">
+        <label for="date" class="label">When did you think of this?:</label>
+        <input type="date" id="date" name="date" required class="input" />
+      </div>
 
-    <label for="genre">Genre:</label>
-    <input type="text" id="genre" name="genre" required><br></br>
+      <div class="form-group">
+        <label for="genre" class="label">Genre:</label>
+        <input type="text" id="genre" name="genre" required class="input" />
+      </div>
 
-    <label for="joke">The Zinger:</label>
-    <input type="text" id="joke" name="joke" required><br></br>
+      <div class="form-group">
+        <label for="joke" class="label">The Zinger:</label>
+        <textarea
+          id="joke"
+          name="joke"
+          rows="4"
+          cols="50"
+          class="textarea"
+          required
+        >
+        </textarea>
+      </div>
 
-    <button type="submit">Add Joke</button><br></br>
-    <button><a href="/">Back to Home</a></button>
-</form>
-</body>
+      <div class="button-container">
+        <button class="BTN" type="submit">Add Joke</button>
+        <button class="BTN">
+          <a href="/" class="homeBTN">Back to Home</a>
+        </button>
+      </div>
+    </form>
+  </body>
 </html>

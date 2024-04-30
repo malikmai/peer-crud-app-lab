@@ -3,14 +3,20 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 const morgan = require("morgan");
+const methodOverride = require("method-override");
 const JokeBook = require("./models/JokeBook.js");
 const mongoose = require("mongoose");
+const path = require("path");
 
 mongoose.connect(process.env.MONGODB_URI);
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride("_method"));
+// app.use(morgan('dev'));
 mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
+
+app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   res.render("home.ejs");

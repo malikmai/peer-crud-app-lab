@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/style.css">
     <title><%= joke.title %></title>
 </head>
 <body>
@@ -10,13 +11,16 @@
     <p><%= joke.date %></p>
     <p><%= joke.genre %></p>
     <p><%= joke.joke %></p>
-
-    <button><a href="/joke/<%= joke._id %>/edit">Make em' Funnier</a></button><br></br>
+<div class="button-container">
+    <div id="SHOWBUTTONS">
+    <button class="BTN"><a href="/joke/<%= joke._id %>/edit">Make em' Funnier</a></button>
 
     <form action="/jokes/<%= joke._id %>/delete" method="POST">
-        <button type="submit">Delete this Joke</button><br></br>
+        <button class="BTN" type="submit">Delete this Joke</button>
     </form>
     
-    <button><a href="/">Back to Home</a></button>
+    <button class="BTN"><a href="/">Back to Home</a></button>
+    </div>
+</div>
 </body>
 </html>
