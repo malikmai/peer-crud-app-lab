@@ -7,17 +7,41 @@
     <title>Jokes List</title>
 </head>
 <body>
-    <h1>Jokes List</h1>
-    <ul>
+    <h1>The Joke List</h1>
+
+    <!-- Search bar -->
+    <input class="searchBar" type="text" id="searchInput" placeholder="Search by title or genre">
+
+    <ol id="jokesList">
         <% joke.forEach((joke) => { %>
-            <li>
-                <a class="showLST" href="/jokes/<%= joke._id %>"><%= joke.title %></a>
+            <li data-title="<%= joke.title.toLowerCase() %>" data-genre="<%= joke.genre.toLowerCase() %>">
+                <a class="showLST" href="/jokes/<%= joke._id %>">Title: <%= joke.title %><br> Genre: <%= joke.genre %><br></br></a>
             </li>
         <% }) %>
-    </ul>
+    </ol>
+
     <div class="button-container">
-    <button class="indexBTN"><a href="/jokes/new">Make a Funny</a></button>
-    <button class="indexBTN"><a href="/">Back to Home</a></button>
+        <button class="indexBTN"><a href="/jokes/new">Make a Funny</a></button>
+        <button class="indexBTN"><a href="/">Back to Home</a></button>
     </div>
+
+    <!-- JavaScript for search functionality -->
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchQuery = this.value.toLowerCase();
+            const jokes = document.querySelectorAll('#jokesList li');
+
+            jokes.forEach(joke => {
+                const title = joke.getAttribute('data-title');
+                const genre = joke.getAttribute('data-genre');
+
+                if (title.includes(searchQuery) || genre.includes(searchQuery)) {
+                    joke.style.display = 'block';
+                } else {
+                    joke.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

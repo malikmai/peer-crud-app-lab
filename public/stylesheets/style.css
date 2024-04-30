@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    margin: auto;
+    padding: auto;
 }
 
 body {
@@ -54,11 +54,22 @@ button:hover {
     margin: 10px;
 }
 
+.searchBar {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 5px 50px 5px 50px;
+    position: sticky;
+    top: 2px;
+}
+
 .showLST {
     color: teal;
     text-decoration: underline;
     display: flex;
-    justify-content: center;
+    align-items: center;
+ 
 }
 
 .form-group {
@@ -81,6 +92,11 @@ button:hover {
 .button-container {
     text-align: center;
     margin-top: 30px;
+}
+ol {
+    color: teal;
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 768px) {
