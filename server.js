@@ -13,15 +13,24 @@ mongoose.connection.on("connected", () => {
 });
 
 app.get("/", async (req, res) => {
-  // const allJokes = await JokeBook.find({});
-  res.render("home.ejs", {});
+  res.render("home.ejs");
+});
+
+app.get("/jokes", async (req, res) => {
+  const allJokes = await JokeBook.find({});
+  res.render("home.ejs", {JokeBook: allJokes});
 });
 
 app.get("/jokes/new", (req, res) => {
   res.render("jokes/new.ejs");
 })
 
-
+app.post("/jokes", async (req, res) => {
+  const { title, date, genre, joke } = req.body;
+  const newJoke = new JokeBook({ title, date, genre, joke });
+  await newJoke.save()
+  res.redirect("/jokes");
+});
 
 
 
