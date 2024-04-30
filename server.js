@@ -12,23 +12,33 @@ mongoose.connection.on("connected", () => {
   console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
 });
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
   res.render("home.ejs");
 });
 
 app.get("/jokes", async (req, res) => {
   const allJokes = await JokeBook.find({});
-  res.render("home.ejs", {JokeBook: allJokes});
+  res.render("index.ejs", { joke: allJokes });
 });
 
 app.get("/jokes/new", (req, res) => {
   res.render("jokes/new.ejs");
-})
+});
+
+app.get("/jokes/:jokeId", async (req, res) => {
+  try {
+    const foundJoke = await JokeBook.findById(req.params.jokeId);
+    res.render("jokes/show.ejs", { joke: foundJoke });
+  } catch (error) {
+    // console.error("Error fetching joke:", error);
+    res.status(500).send("Error fetching joke");
+  }
+});
 
 app.post("/jokes", async (req, res) => {
   const { title, date, genre, joke } = req.body;
   const newJoke = new JokeBook({ title, date, genre, joke });
-  await newJoke.save()
+  await newJoke.save();
   res.redirect("/jokes");
 });
 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Joke</title>
+</head>
+<body>
+    <h1>Edit Joke</h1>
+    <form action="/jokes/<%= joke._id %>" method="POST">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= joke.title %>"><br>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="<%= joke.date %>"><br>
+
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" value="<%= joke.genre %>"><br>
+
+        <label for="joke">The New Zinger:</label>
+        <input type="text" id="joke" name="joke" value="<%= joke.joke %>"><br>
+
+        <button type="submit">Make it Happen</button><br></br>
+    </form>
+
+    <form action="/jokes/<%= joke._id %>/delete" method="POST">
+        <button type="submit">This was a BAD idea</button>
+    </form>
+</body>
+</html>
